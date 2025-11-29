@@ -168,44 +168,50 @@
             box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
         }
         
-        /* CAMPUS LIFE SECTION */
-        .campus-life {
+        /* FORMULARIO DE REGISTRO DE PERSONAS */
+        .people-form-section {
             padding: 80px 0;
-            background: var(--white);
+            background: var(--light);
         }
         
-        .campus-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .campus-card {
+        .people-form-card {
             background: white;
+            padding: 30px;
             border-radius: 15px;
-            overflow: hidden;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            margin-bottom: 30px;
         }
         
-        .campus-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .campus-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .campus-content {
-            padding: 25px;
-        }
-        
-        .campus-content h3 {
+        .people-form-card h3 {
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        /* TABLA DE REGISTROS */
+        .people-table-container {
+            margin-top: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .people-table-container h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .people-stats {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .people-stats .form-group {
+            margin-bottom: 0;
         }
         
         /* PLATAFORMA COLABORATIVA PARA GRANDES MENTES */
@@ -409,14 +415,14 @@
         }
         
         .testimonial-text:before {
-            content: ";";
+            content: " ";
             font-size: 4rem;
             color: var(--light);
             position: absolute;
             top: -20px;
             left: -10px;
             z-index: 0;
-        } 
+         }
         
         .testimonial-author {
             display: flex;
@@ -434,6 +440,26 @@
             justify-content: center;
             color: white;
             font-weight: bold;
+        }
+        
+        /* NUESTRO TRABAJO - FORMULARIOS */
+        .our-work {
+            padding: 80px 0;
+            background: var(--light);
+        }
+        
+        .form-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .form-card h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
         }
         
         /* COMPARTIR TRABAJO */
@@ -558,17 +584,6 @@
             transform: translateY(-3px);
         }
         
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 12px 15px;
-            margin-bottom: 15px;
-            border: none;
-            border-radius: 5px;
-            background: rgba(255,255,255,0.1);
-            color: white;
-        }
-        
         .copyright {
             text-align: center;
             padding-top: 30px;
@@ -636,5 +651,10 @@
             
             .steps {
                 flex-direction: column;
+            }
+            
+            .people-stats {
+                flex-direction: column;
+                gap: 15px;
             }
         }

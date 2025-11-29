@@ -766,3 +766,227 @@ function initApp() {
 
 // Inicializar la aplicación cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', initApp);
+
+// Funcionalidad del formulario de personas (del código original)
+const tabla = document.getElementById("tabla");
+
+// Generar datos aleatorios
+document.getElementById("btnGenerar").onclick = function () {
+    let nombre = "Persona " + (Math.floor(Math.random() * 9) + 1);
+    let dia = Math.floor(Math.random() * 30) + 1;
+    let mes = Math.floor(Math.random() * 12) + 1;
+    let anio = Math.floor(Math.random() * (2020 - 1980 + 1)) + 1980;
+
+    document.getElementById("nombre").value = nombre;
+    document.getElementById("dia").value = dia;
+    document.getElementById("mes").value = mes;
+    document.getElementById("anio").value = anio;
+
+    // Calcular edad
+    let edad = new Date().getFullYear() - anio;
+
+    // Cambio de imagen según la edad
+    let imagen = edad < 18 ? "images/jovenes.png" : "images/adultos.png";
+    document.getElementById("foto").src = imagen;
+};
+
+// Insertar fila en la tabla
+document.getElementById("btnInsertar").onclick = function () {
+    let nombre = document.getElementById("nombre").value;
+    let dia = document.getElementById("dia").value;
+    let mes = document.getElementById("mes").value;
+    let anio = document.getElementById("anio").value;
+
+    // Validar que todos los campos estén llenos
+    if (!nombre || !dia || !mes || !anio) {
+        alert("Por favor, complete todos los campos antes de insertar.");
+        return;
+    }
+
+    let fecha = `${dia}-${mes}-${anio}`;
+    let edad = new Date().getFullYear() - parseInt(anio);
+
+    let fila = `
+        <tr>
+            <td>${nombre}</td>
+            <td>${fecha}</td>
+            <td>${edad}</td>
+        </tr>
+    `;
+
+    tabla.innerHTML += fila;
+
+    actualizarPromedio();
+};
+
+// Calcular promedio
+function actualizarPromedio() {
+    let filas = tabla.getElementsByTagName("tr");
+    let suma = 0;
+
+    for (let i = 0; i < filas.length; i++) {
+        let edad = parseInt(filas[i].children[2].textContent);
+        suma += edad;
+    }
+
+    let promedio = filas.length > 0 ? (suma / filas.length).toFixed(2) : 0;
+    document.getElementById("promedio").value = promedio;
+}
+
+// Resaltar filas
+document.getElementById("btnResaltar").onclick = function () {
+    let promedio = parseFloat(document.getElementById("promedio").value);
+    let filas = tabla.getElementsByTagName("tr");
+
+    for (let i = 0; i < filas.length; i++) {
+        let edad = parseInt(filas[i].children[2].textContent);
+
+        filas[i].style.backgroundColor =
+            edad > promedio ? "#ffcccc" :        // Mayor al promedio (rojo suave)
+            edad < promedio ? "#ccffcc" :        // Menor al promedio (verde suave)
+            "";                                  // Igual → normal
+    }
+};
+
+// Actualizar valores de sliders
+document.getElementById('semestre').addEventListener('input', function() {
+    document.getElementById('semestreValue').textContent = this.value;
+});
+
+// Mobile Menu (del código original)
+document.querySelector('.mobile-menu').addEventListener('click', function() {
+    document.querySelector('nav ul').classList.toggle('show');
+});
+
+// Smooth Scroll (del código original)
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Form Submission (del código original)
+document.getElementById('upload-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('¡Gracias por compartir tu trabajo! Será revisado y publicado en las próximas 24 horas.');
+    this.reset();
+});
+
+        // Mobile Menu
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form Submission
+        document.getElementById('upload-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por compartir tu trabajo! Será revisado y publicado en las próximas 24 horas.');
+            this.reset();
+        });
+
+        // Funcionalidad del formulario de personas
+        const Tabla = document.getElementById("Tabla");
+
+        // Generar datos aleatorios
+        document.getElementById("btnGenerar").onclick = function () {
+            let nombre = "Persona " + (Math.floor(Math.random() * 9) + 1);
+            let dia = Math.floor(Math.random() * 30) + 1;
+            let mes = Math.floor(Math.random() * 12) + 1;
+            let anio = Math.floor(Math.random() * (2020 - 1980 + 1)) + 1980;
+
+            document.getElementById("nombre").value = nombre;
+            document.getElementById("dia").value = dia;
+            document.getElementById("mes").value = mes;
+            document.getElementById("anio").value = anio;
+
+            // Calcular edad
+            let edad = new Date().getFullYear() - anio;
+
+            // Cambio de imagen según la edad
+            let imagen = edad < 18 ? "images/jovenes.png" : "images/adultos.png";
+            document.getElementById("foto").src = imagen;
+        };
+
+        // Insertar fila en la tabla
+        document.getElementById("btnInsertar").onclick = function () {
+            let nombre = document.getElementById("nombre").value;
+            let dia = document.getElementById("dia").value;
+            let mes = document.getElementById("mes").value;
+            let anio = document.getElementById("anio").value;
+
+            // Validar que todos los campos estén llenos
+            if (!nombre || !dia || !mes || !anio) {
+                alert("Por favor, complete todos los campos antes de insertar.");
+                return;
+            }
+
+            let fecha = `${dia},-${mes}-${anio}`;
+            let edad = new Date().getFullYear() - parseInt(anio);
+
+            let fila = `
+                <tr>
+                    <td>${nombre}</td>
+                    <td>${fecha}</td>
+                    <td>${edad}</td>
+                </tr>
+            `;
+
+            tabla.innerHTML += fila;
+
+            actualizarPromedio();
+        };
+
+        // Calcular promedio
+        function actualizarPromedio() {
+            let filas = tabla.getElementsByTagName("tr");
+            let suma = 0;
+
+            for (let i = 0; i < filas.length; i++) {
+                let edad = parseInt(filas[i].children[2].textContent);
+                suma += edad;
+            }
+
+            let promedio = filas.length > 0 ? (suma / filas.length).toFixed(2) : 0;
+            document.getElementById("promedio").value = promedio;
+        }
+
+        // Resaltar filas
+        document.getElementById("btnResaltar").onclick = function () {
+            let promedio = parseFloat(document.getElementById("promedio").value);
+            let filas = tabla.getElementsByTagName("tr");
+
+            for (let i = 0; i < filas.length; i++) {
+                let edad = parseInt(filas[i].children[2].textContent);
+
+                filas[i].style.backgroundColor =
+                    edad > promedio ? "#ffcccc" :        // Mayor al promedio (rojo suave)
+                    edad < promedio ? "#ccffcc" :        // Menor al promedio (verde suave)
+                    "";                                  // Igual → normal
+            }
+        };
+
+        // Actualizar valores de sliders
+        document.getElementById('semestre').addEventListener('input', function() {
+            document.getElementById('semestreValue').textContent = this.value;
+        });
