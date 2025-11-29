@@ -980,9 +980,9 @@ document.getElementById('upload-form').addEventListener('submit', function(e) {
                 let edad = parseInt(filas[i].children[2].textContent);
 
                 filas[i].style.backgroundColor =
-                    edad > promedio ? "#ffcccc" :        // Mayor al promedio (rojo suave)
-                    edad < promedio ? "#ccffcc" :        // Menor al promedio (verde suave)
-                    "";                                  // Igual → normal
+                    edad > promedio ? "#ffcccc" :      
+                    edad < promedio ? "#ccffcc" :       
+                    "";                                  
             }
         };
 
